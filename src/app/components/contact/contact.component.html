@@ -1,39 +1,77 @@
 <div class="form-container">
-  <h1>Contact us!</h1>
+  <h1>Gestor de Tickets!</h1>
   <form [formGroup]="contactForm" (ngSubmit)="onSaveForm()">
-    <input type="text" formControlName="name" placeholder="Your Name">
+
+    <input type="text" formControlName="name" placeholder="Ingrese Nombre">
+
     <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
       <div class="container-error-message" *ngIf="name.errors.required">
-        Name is required
+        Nombre es requerido.
       </div>
       <div class="container-error-message" *ngIf="name.errors.minlength">
-        Name must be at least 5 characters long.
+        Nombre debe tener al menos 3 caracteres de largo.
       </div>
     </div>
 
-    <input type="text" formControlName="email" placeholder="Your email">
+    <input type="text" formControlName="lastname" placeholder="Ingrese Apellido">
+
+    <div class="alert-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+      <div class="container-error-message" *ngIf="lastname.errors.required">
+        Apellido es requerido.
+      </div>
+      <div class="container-error-message" *ngIf="lastname.errors.minlength">
+        Apellido debe tener al menos 3 caracteres de largo.
+      </div>
+    </div>
+
+    <input type="text" formControlName="role" placeholder="Ingrese Rol / Cargo">
+
+    <div class="alert-danger" *ngIf="role.invalid && (role.dirty || role.touched)">
+      <div class="container-error-message" *ngIf="role.errors.required">
+        Rol es requerido.
+      </div>
+      <div class="container-error-message" *ngIf="role.errors.minlength">
+        Rol debe tener al menos 2 caracteres de largo.
+      </div>
+    </div>
+
+    <input type="text" formControlName="email" placeholder="Ingrese correo">
 
     <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
       <div class="container-error-message" *ngIf="email.errors.required">
-        Email is required
+        Correo es requerido.
       </div>
       <div class="container-error-message" *ngIf="email.errors.minlength">
-        Email must be at least 5 characters long.
+        Correo debe tener al menos 5 caracteres de largo.
       </div>
       <div class="container-error-message"
         *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">
-        Value has to be a valid email address.
+        Deber ser un formato de correo valido.
       </div>
     </div>
-    <textarea formControlName="message" placeholder="Type your message"></textarea>
+
+    <input type="text" formControlName="title" placeholder="Ingrese titulo de incidencia">
+
+    <div class="alert-danger" *ngIf="title.invalid && (title.dirty || title.touched)">
+      <div class="container-error-message" *ngIf="title.errors.required">
+        Titulo es requerido.
+      </div>
+      <div class="container-error-message" *ngIf="title.errors.minlength">
+        Titulo debe tener al menos 10 caracteres de largo.
+      </div>
+    </div>
+
+    <textarea formControlName="message" placeholder="Ingrese detalle de solicitud"></textarea>
+
     <div class="alert-danger" *ngIf="message.invalid && (message.dirty || message.touched)">
       <div class="container-error-message" *ngIf="message.errors.required">
-        Message is required
+        Campo requerido.
       </div>
       <div class="container-error-message" *ngIf="message.errors.minlength">
-        Message must be at least 10 characters long.
+        Mensaje debe tener un largo minimo de 10 caracteres.
       </div>
     </div>
-    <button type="submit" class="btn-send" [disabled]="!contactForm.valid">Send</button>
+
+    <button type="submit" class="btn-send" [disabled]="!contactForm.valid">Enviar solicitud</button>
   </form>
 </div>

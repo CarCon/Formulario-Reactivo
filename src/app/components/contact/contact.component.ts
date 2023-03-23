@@ -20,13 +20,19 @@ export class ContactComponent {
   }
 
   get name() { return this.contactForm.get('name'); }
+  get lastname() { return this.contactForm.get('lastname'); }
+  get role() { return this.contactForm.get('role'); }
   get email() { return this.contactForm.get('email'); }
+  get title() { return this.contactForm.get('title'); }
   get message() { return this.contactForm.get('message'); }
 
   createForm() {
     return new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      role: new FormControl('', [Validators.required, Validators.minLength(2)]),
       email: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern)]),
-      name: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      title: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(20)]),
       message: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)])
     });
   }
